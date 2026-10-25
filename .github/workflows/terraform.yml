@@ -1,6 +1,9 @@
-name: Terraform Azure
+name: Terraform validation
 
 on:
+  push:
+    branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -11,21 +14,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Init
-        run: terraform init
+      - name: Initialize without a backend
+        run: terraform init -backend=false
 
-      - name: Terraform Format
-        run: terraform fmt -check
+      - name: Check formatting
+        run: terraform fmt -check -recursive
 
-      - name: Terraform Validate
+      - name: Validate configuration
         run: terraform validate
-
-      - name: Terraform Plan
-        run: terraform plan

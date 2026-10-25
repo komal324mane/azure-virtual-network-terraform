@@ -8,6 +8,7 @@ crash.*.log
 # Sensitive Terraform variables
 terraform.tfvars
 *.tfvars
+!terraform.tfvars.example
 
 # Terraform lock file
 # Keep this file in GitHub

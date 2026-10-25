@@ -1,0 +1,7 @@
+resource_group_name      = "rg-network-lab"
+location                 = "Central India"
+vnet_name                = "vnet-network-lab"
+subnet_name              = "snet-network-lab"
+address_space            = ["10.20.0.0/16"]
+subnet_address_prefixes  = ["10.20.1.0/24"]
+admin_source_cidr        = "203.0.113.10/32"
